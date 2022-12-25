@@ -1,0 +1,82 @@
+import React, {useState} from 'react';
+import {View, TextInput, Button, Text, StyleSheet} from 'react-native';
+
+function IncomeInputForm() {
+  const [income1, setIncome1] = useState('');
+  const [income2, setIncome2] = useState('');
+  const [totalIncome, setTotalIncome] = useState(0);
+
+  const calculateTotalIncome = () => {
+    const total = parseInt(income1) + parseInt(income2);
+    setTotalIncome(total);
+  };
+
+  return (
+    <View>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>Bills Calculator</Text>
+      </View>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <View>
+          <TextInput
+            style={styles.incomeContainer}
+            placeholder="Income First Person"
+            value={income1}
+            onChangeText={text => setIncome1(text)}
+          />
+          <Text style={styles.incomeSideText}>Person 2</Text>
+        </View>
+        <View>
+          <TextInput
+            style={styles.incomeContainer}
+            placeholder="Income Second Person"
+            value={income2}
+            onChangeText={text => setIncome2(text)}
+          />
+          <Text style={styles.incomeSideText}>Person 1</Text>
+        </View>
+      </View>
+      <View style={{padding: 15}}>
+        <Button title="Calculate Total Income" onPress={calculateTotalIncome} />
+      </View>
+      <Text style={styles.totalIncomeContainer}>
+        Total income: {totalIncome} € per Month
+      </Text>
+    </View>
+  );
+}
+
+/// ------------ here starts the Stylesheets ----------
+const styles = StyleSheet.create({
+  headerContainer: {
+    padding: 15,
+  },
+  headerText: {
+    textAlign: 'center',
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  incomeContainer: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    backgroundColor: 'grey',
+    textAlign: 'center',
+  },
+  totalIncomeContainer: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+    padding: 15,
+  },
+  incomeSideText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    backgroundColor: 'lightgray ',
+    textAlign: 'center',
+  },
+});
+
+export default IncomeInputForm;

@@ -1,0 +1,37 @@
+{
+  "root": true,
+  "env": {
+    "es2021": true,
+    "node": true,
+    "react-native/react-native": true
+  },
+  "extends": ["@react-native-community"],
+  "plugins": ["react", "react-native"],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {"extensions": [".js", ".jsx", ".ts", ".tsx"]}
+    ],
+    "no-use-before-define": ["error", {"variables": false}],
+    "consistent-return": "off",
+    "no-param-reassign": "off",
+    "no-restricted-properties": "warn",
+    "global-require": "off",
+    "no-shadow": "off",
+    "no-unused-vars": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "arrow-body-style": "off",
+    "react/prop-types": [
+      "warn",
+      {"ignore": ["navigation", "navigation.navigate"]}
+    ],
+    "react-native/no-inline-styles": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+      }
+    ]
+  }
+}
